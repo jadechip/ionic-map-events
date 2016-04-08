@@ -95,11 +95,11 @@ angular.module('starter.controllers', [])
 						var contentString = "<div><a ng-click='clickTest()'>Click me!</a></div>";
 						var compiled = $compile(contentString)($scope);
 
-						var infowindow = new google.maps.InfoWindow({
+						// var infowindow = new google.maps.InfoWindow({
 						 
-						});
-						infowindow.setContent($scope.latLang.location);
-						infowindow.open(map, marker);
+						// });
+						// infowindow.setContent($scope.latLang.location);
+						// infowindow.open(map, marker);
 
 						var marker = new google.maps.Marker({
 						  position: myLatlng,
@@ -120,17 +120,23 @@ angular.module('starter.controllers', [])
 					      center: map.center,
 					      radius: 10000
 					    });
-				
+
 
 						google.maps.event.addListener(marker, 'click', function() {
-						  infowindow.open(map, marker);
-						 
+						  // infowindow.open(map, marker);	
+						  console.log('clicked');					 
 						});
+
+					   	google.maps.event.addListener(map, 'zoom_changed', function () {
+					    	console.log('adrenaline');
+					    	$scope.onClickCallback(map, marker);
+					    });
 
 
 						google.maps.event.addListener(map, "dragend", function() {
 					    	$scope.onClickCallback(map, marker);													    					    	
 						});
+
 
 						$scope.map = map;
 									
@@ -172,11 +178,11 @@ angular.module('starter.controllers', [])
 						var contentString = "<div><a ng-click='clickTest()'>Click me!</a></div>";
 						var compiled = $compile(contentString)($scope);
 
-						var infowindow = new google.maps.InfoWindow({
+						// var infowindow = new google.maps.InfoWindow({
 						 
-						});
-						infowindow.setContent($scope.latLang.location);
-						infowindow.open(map, marker);
+						// });
+						// infowindow.setContent($scope.latLang.location);
+						// infowindow.open(map, marker);
 
 						var marker = new google.maps.Marker({
 						  position: myLatlng,
